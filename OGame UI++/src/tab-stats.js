@@ -49,6 +49,52 @@ var fn = function () {
         return planetOrder.indexOf(a.coords.join(':')) > planetOrder.indexOf(b.coords.join(':')) ? 1 : -1;
       });
 
+      // collect missions info
+      var missions = [];
+      $('#eventContent .tooltip.tooltipClose').each(function () {
+        var $tooltip = $($(this).attr('title'));
+        var $tr = $(this).parent().parent();
+
+        var reverse = $tr.find('.icon_movement_reserve').length ? true : false;
+
+        var trCount = $tooltip.find('tr').length;
+        var entry = {
+          metal: window._gfNumberToJsNumber($tooltip.find('tr:nth-child(' + (trCount - 2) + ') td').last().text()),
+          crystal: window._gfNumberToJsNumber($tooltip.find('tr:nth-child(' + (trCount - 1) + ') td').last().text()),
+          deuterium: window._gfNumberToJsNumber($tooltip.find('tr:nth-child(' + trCount + ') td').last().text()),
+          from: $tr.find('.coordsOrigin a').text().trim(),
+          to: $tr.find('.destCoords a').text().trim(),
+          nShips: $tr.find('.detailsFleet').text().trim(),
+          reverse: reverse
+        };
+
+        if (reverse) {
+          var to = entry.to;
+          entry.to = entry.from;
+          entry.from = to;
+        }
+
+        missions.push(entry);
+      });
+
+      missions = missions.filter(function (mission) {
+        var isReturnMissionDuplicate = false;
+        missions.forEach(function (otherMission) {
+          if (
+            mission.reverse &&
+            otherMission.from === mission.to &&
+            otherMission.to === mission.from &&
+            otherMission.nShips === mission.nShips &&
+            otherMission.metal === mission.metal &&
+            otherMission.crystal === mission.crystal &&
+            otherMission.deuterium === mission.deuterium
+          ) {
+            isReturnMissionDuplicate = true;
+          }
+        });
+        return !isReturnMissionDuplicate;
+      });
+
       var planetStatsHtml = '';
       var rentabilityTimes = [];
       var fullIn = { metal: [], crystal: [], deuterium: [] };
@@ -88,6 +134,16 @@ var fn = function () {
             planet: planet,
             time: planetFullIn
           });
+        });
+
+        // inflight resources
+        var inflight = { metal: 0, crystal: 0, deuterium: 0 };
+        missions.forEach(function (mission) {
+          if (mission.to === ('[' + planet.coords.join(':') + ']')) {
+            inflight.metal += mission.metal
+            inflight.crystal += mission.crystal
+            inflight.deuterium += mission.deuterium
+          }
         });
 
         // add production to global stats
@@ -186,6 +242,7 @@ var fn = function () {
               '</div>',
               '<div style="float:left; width: 95px; text-align: left; padding-left: 1em; font-size: 10px; line-height: 1em">',
               '<div class="uipp-current-resources" points="' + window._num(minePoints) + '">' + window._num(currentRealtimePlanetResources[resource], planet.resources[resource].prod, planet.resources[resource].max) + (planet.moon ? (' + <span class="overmark">' + window._num(moonResource) + '</span>') : '') + '</div>',
+              inflight[resource] ? '<div><span class="undermark">+' + window._num(inflight[resource]) + '</span>' + '</div>' : '<div>+0</div>',
               '<div><span class="undermark">+' + window._num(Math.floor(planet.resources[resource].prod * 3600)) + '</span> /' + window._translate('TIME_HOUR') + '</div>',
               '<div><span class="undermark">+' + window._num(Math.floor(planet.resources[resource].prod * 3600 * 24)) + '</span> /' + window._translate('TIME_DAY') + '</div>',
               '</div>',
@@ -259,51 +316,6 @@ var fn = function () {
       };
 
       // in flight
-      var missions = [];
-      $('#eventContent .tooltip.tooltipClose').each(function () {
-        var $tooltip = $($(this).attr('title'));
-        var $tr = $(this).parent().parent();
-
-        var reverse = $tr.find('.icon_movement_reserve').length ? true : false;
-
-        var trCount = $tooltip.find('tr').length;
-        var entry = {
-          metal: window._gfNumberToJsNumber($tooltip.find('tr:nth-child(' + (trCount - 2) + ') td').last().text()),
-          crystal: window._gfNumberToJsNumber($tooltip.find('tr:nth-child(' + (trCount - 1) + ') td').last().text()),
-          deuterium: window._gfNumberToJsNumber($tooltip.find('tr:nth-child(' + trCount + ') td').last().text()),
-          from: $tr.find('.coordsOrigin a').text().trim(),
-          to: $tr.find('.destCoords a').text().trim(),
-          nShips: $tr.find('.detailsFleet').text().trim(),
-          reverse: reverse
-        };
-
-        if (reverse) {
-          var to = entry.to;
-          entry.to = entry.from;
-          entry.from = to;
-        }
-
-        missions.push(entry);
-      });
-
-      missions = missions.filter(function (mission) {
-        var isReturnMissionDuplicate = false;
-        missions.forEach(function (otherMission) {
-          if (
-            mission.reverse &&
-            otherMission.from === mission.to &&
-            otherMission.to === mission.from &&
-            otherMission.nShips === mission.nShips &&
-            otherMission.metal === mission.metal &&
-            otherMission.crystal === mission.crystal &&
-            otherMission.deuterium === mission.deuterium
-          ) {
-            isReturnMissionDuplicate = true;
-          }
-        });
-        return !isReturnMissionDuplicate;
-      });
-
       var inflight = { metal: 0, crystal: 0, deuterium: 0 };
       missions.forEach(function (mission) {
         inflight.metal += mission.metal;
