@@ -713,10 +713,10 @@ var fn = function () {
             tooltip = tooltip.replace(/<\/?span[^>]*>/g, '');
             $rentabilityWrapper.append($([
               '<span class="tooltip" title="' + tooltip + '"',
-              ' style="display:inline-block;margin:5px;position:relative;height:50px;width:50px;"',
+              ' style="display:inline-block;margin:5px;position:relative;height:48px;width:48px;"',
               ' onclick="uipp_toggleSimulateNextBuild(this, ' + i + ')">',
-              '<img src="' + window.uipp_images[rentability.resource] + '" height="50"/>',
-              '<span class="shadowed" style="position:absolute;width:100%;display:inline-block;line-height:50px;text-align:center;left:0;top: 0;font-size:26px;">' + rentability.level + '</span>',
+              '<img src="' + window.uipp_images[rentability.resource] + '" height="48"/>',
+              '<span class="shadowed" style="position:absolute;width:100%;display:inline-block;line-height:48px;text-align:center;left:0;top: 0;font-size:26px;">' + rentability.level + '</span>',
               rentability.inprog ? '<span class="icon12px icon_wrench" style="position:absolute;bottom:0;right:0;"></span>' : '',
               '</span>',
             ].join('')));
@@ -738,10 +738,10 @@ var fn = function () {
             tooltip = tooltip.replace(/<\/?span[^>]*>/g, '');
             $rentabilityWrapper.append($([
               '<span class="tooltip" title="' + tooltip + '"',
-              ' style="display:inline-block;margin:5px;position:relative;height:50px;width:50px;"',
+              ' style="display:inline-block;margin:5px;position:relative;height:48px;width:48px;"',
               ' onclick="uipp_toggleSimulateNextBuild(this, ' + i + ')">',
-              '<img src="' + window.uipp_images[rentability.resource] + '" height="50"/>',
-              '<span class="shadowed" style="position:absolute;width:100%;display:inline-block;line-height:50px;text-align:center;left:0;top: 0;font-size:26px;">' + rentability.level + '</span>',
+              '<img src="' + window.uipp_images[rentability.resource] + '" height="48"/>',
+              '<span class="shadowed" style="position:absolute;width:100%;display:inline-block;line-height:48px;text-align:center;left:0;top: 0;font-size:26px;">' + rentability.level + '</span>',
               rentability.inprog ? '<span class="icon12px icon_wrench" style="position:absolute;bottom:0;right:0;"></span>' : '',
               '</span>',
             ].join('')));
@@ -760,9 +760,9 @@ var fn = function () {
             tooltip = tooltip.replace(/<\/?span[^>]*>/g, '');
             $rentabilityWrapper.append($([
               '<span class="tooltip" title="' + tooltip + '"',
-              ' style="display:inline-block;margin:5px;position:relative;height:50px;width:50px;cursor:pointer;user-select:none"',
+              ' style="display:inline-block;margin:5px;position:relative;height:48px;width:64px;cursor:pointer;user-select:none"',
               ' onclick="uipp_toggleSimulateNextBuild(this, ' + i + ')">',
-              '<img src="' + window.uipp_images[rentability.resource] + '" height="50"/>',
+              '<img src="' + window.uipp_images.resources[rentability.resource] + '" width="64" height="48"/>',
               '<span class="shadowed" style="position:absolute;width:100%;display:inline-block;line-height:35px;text-align:center;left:0;top: 0;font-size:19px;">' + rentability.level + '</span>',
               '<span class="shadowed" style="position:absolute;width:100%;display:inline-block;line-height:35px;text-align:center;left:0;top: 17px;font-size:9px;">[' + rentability.coords.join(':') + ']</span>',
               rentability.inprog ? '<span class="icon12px icon_wrench" style="position:absolute;bottom:0;right:0;"></span>' : '',
