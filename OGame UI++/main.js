@@ -127,6 +127,9 @@ var userscript = function () {
     window._addSolarSatHelperInterval();
   }
 
+  // Auto reload
+  window._autoReload();
+
   // Refresh universe data (config.players)
   window._refreshUniverseData();
 

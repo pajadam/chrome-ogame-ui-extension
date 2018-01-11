@@ -57,6 +57,7 @@
       "src/utils/on-menu-click.js",
       "src/utils/dom-events.js",
       "src/analytics.js",
+      "src/auto-reload.js",
       "src/costs-helper.js",
       "src/current-planet-storage-helper.js",
       "src/galaxy-players-planets.js",
