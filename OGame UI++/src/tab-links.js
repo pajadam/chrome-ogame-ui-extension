@@ -22,9 +22,11 @@ var fn = function () {
     // add entries in menu
     var i = 0;
     for (var key in window.config.links) {
+      var href = _getLink(window.config.links[key])
+      var targetAttr = /^https?:\/\/[^.]+\.ogame\.gameforge\.com\//i.test(href) ? '' : ' target="_blank"'
       var $entry = $([
         '<li style="margin-top:' + (i === 0 ? '10' : '0') + 'px;" class="customlink' + (++i) + '">',
-        '<a class="menubutton" href="' + _getLink(window.config.links[key]) + '" target="_blank">',
+        '<a class="menubutton" href="' + href + '"' + targetAttr + '>',
         '<span class="textlabel" style="color:white">' + key + '</span>',
         '</a>',
         '</li>'
