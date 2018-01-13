@@ -68,6 +68,13 @@ var fn = function () {
           reverse: reverse
         };
 
+        // invalid resources table
+        if (trCount < 4) {
+          entry.metal = 0
+          entry.crystal = 0
+          entry.deuterium = 0
+        }
+
         if (reverse) {
           var to = entry.to;
           entry.to = entry.from;
