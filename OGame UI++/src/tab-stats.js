@@ -181,12 +181,34 @@ var fn = function () {
           '</td>',
           ['metal', 'crystal', 'deuterium'].map(function (resource) {
             var costs = window.uipp_getCost(resource, planet.resources[resource].level);
+            var needMetal = Math.max(costs[0] - currentRealtimePlanetResources.metal - inflight.metal, 0);
+            var needCrystal = Math.max(costs[1] - currentRealtimePlanetResources.crystal - inflight.crystal, 0);
+            if (planet.moon) {
+              var moonResources = window.config.my.planets[planet.moon].resources;
+              if (moonResources) {
+                needMetal -= moonResources.metal.now;
+                needCrystal -= moonResources.crystal.now;
+              }
+            }
+            var needShipTooltip = ''
+            if ((needMetal + needCrystal) > 0) {
+              needShipTooltip += [
+                '<br>',
+                '(',
+                Math.ceil((needMetal + needCrystal) / 5000) + ' SC or ',
+                Math.ceil((needMetal + needCrystal) / 25000) + ' LC',
+                ')'
+              ].join('');
+            }
             var tooltip = [
               window._num(costs[0]),
               ' ' + window._translate('UNIT_METAL'),
+              (needMetal > 0) ? ' ' + window._num(-needMetal) : '',
               '<br>',
               window._num(costs[1]),
-              ' ' + window._translate('UNIT_CRYSTAL')
+              ' ' + window._translate('UNIT_CRYSTAL'),
+              (needCrystal > 0) ? ' ' + window._num(-needCrystal) : '',
+              needShipTooltip
             ].join('');
 
             var inprog = window.config.inprog['[' + planet.coords.join(':') + ']-' + resource];
