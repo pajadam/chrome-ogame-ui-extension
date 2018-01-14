@@ -274,6 +274,7 @@ var fn = function () {
               inflight[resource] ? '<div><span class="undermark">+' + window._num(inflight[resource]) + '</span>' + '</div>' : '<div>+0</div>',
               '<div><span class="undermark">+' + window._num(Math.floor(planet.resources[resource].prod * 3600)) + '</span> /' + window._translate('TIME_HOUR') + '</div>',
               '<div><span class="undermark">+' + window._num(Math.floor(planet.resources[resource].prod * 3600 * 24)) + '</span> /' + window._translate('TIME_DAY') + '</div>',
+              '<div>' + '(' + Math.floor(100 * currentRealtimePlanetResources[resource] / planet.resources[resource].max) + '%) ' + window._num(planet.resources[resource].max) + '</div>',
               '</div>',
               '</td>'
             ].join('');
