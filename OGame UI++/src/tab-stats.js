@@ -170,10 +170,13 @@ var fn = function () {
 
         globalStats.planetCount++;
 
+        var planetTotalResource = currentRealtimePlanetResources.metal + currentRealtimePlanetResources.crystal + currentRealtimePlanetResources.deuterium;
+        var planetTooltip = Math.ceil(planetTotalResource / 5000) + " SC or " + Math.ceil(planetTotalResource / 25000) + " LC"
+
         // add planet stats html
         planetStatsHtml += [
           '<tr>',
-          '<td style="max-width: 80px; overflow: hidden; text-overflow: ellipsis;">',
+          '<td class="tooltip" style="max-width: 80px; overflow: hidden; text-overflow: ellipsis;" title="' + planetTooltip + '">',
           '<a href="' + planet.href + '">',
           '<span class="uipp-stats-planet-name">' + planet.name + '</span><br>',
           '<span style="vertical-align: -1px; opacity: .7;" class="uipp-stats-planet-coords" temp="' + planet.averageTemp + '">[' + planet.coords.join(':') + ']</span>',
