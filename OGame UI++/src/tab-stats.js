@@ -395,7 +395,7 @@ var fn = function () {
             '<td>',
             '<div class="shadowed" style="float: left; width: 48px; height: 32px; background-image:url(' + window.uipp_images.resources[resource] + ')">',
             fullInTop3.map(function (fullInEntry) {
-              return '<div style="font-size:9px;line-height:11px">' + window._time(fullInEntry.time, -1) + '</div>';
+              return '<div style="font-size:9px;line-height:11px;white-space:nowrap">' + window._time(fullInEntry.time, -1) + '</div>';
             }).join(''),
             '</div>',
             '<div style="float:left; width: 95px; text-align: left; padding-left: 1em; font-size: 10px; line-height: 1em">',
