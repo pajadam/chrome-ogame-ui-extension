@@ -1,6 +1,12 @@
 var fn = function () {
   'use strict';
   window._gfNumberToJsNumber = function _gfNumberToJsNumber (num) {
+    // check if common number format, ex: 1,234,567,890
+    if (num.match(/^[0-9,]+$/)) {
+      num = num.replace(/,/g, '');
+      return Number(num)
+    }
+
     // note: this won't work over 1000 billions
     var millionChar = window.gfNumberGetHumanReadable(1e6, true).replace('1', '');
     var billionChar = window.gfNumberGetHumanReadable(1e9, true).replace('1', '');
