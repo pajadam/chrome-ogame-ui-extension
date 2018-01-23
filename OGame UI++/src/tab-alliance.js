@@ -34,19 +34,27 @@ var fn = function () {
       '<thead id="highscoreContent">',
       '<tr>',
       '<th>' + window._translate('PLAYER') + '</th>',
-      '<th><span class="navButton uipp-score" id="points"></span></th>',
+      '<th><span class="navButton uipp-score" id="points" title="Global Score"></span></th>',
       '<th>⇵</th>',
-      '<th><span class="navButton uipp-score" id="fleet"></span></th>',
+      '<th><span class="navButton uipp-score" id="fleet" title="' + window._translate('MILITARY_SCORE') + '"></span></th>',
       '<th>⇵</th>',
-      '<th class="menu_icon"><span class="menuImage active fleet1" style="height: 27px; width: 27px; display: inline-block; margin-bottom: -5px;"></span></th>',
+      '<th class="menu_icon"><span title="Ships" class="menuImage active fleet1" style="height: 27px; width: 27px; display: inline-block; margin-bottom: -5px;"></span></th>',
       '<th>⇵</th>',
-      '<th><span class="navButton uipp-score" id="economy"></span></th>',
+      '<th><span class="navButton uipp-score" id="economy" title="' + window._translate('ECONOMY_SCORE') + '"></span></th>',
       '<th>⇵</th>',
+      '<th title="Basic Building Score">B</th>',
+      '<th title="Defense Score">D</th>',
+      '<th title="Fleet Score">F</th>',
+      '<th title="Fleet Quality">Q</th>',
       '<th>' + window._translate('PLANETS') + '</th>',
       '</tr>',
       '</thead>',
       '<tbody>',
       alliancePlayers.map(function (alliancePlayer) {
+        var defenseScore = Number(alliancePlayer.militaryScore) + Number(alliancePlayer.economyScore) + Number(alliancePlayer.researchScore) - Number(alliancePlayer.globalScore);
+        var basicBuildingScore = Number(alliancePlayer.economyScore) - defenseScore;
+        var fleetScore = Number(alliancePlayer.militaryScore) - defenseScore;
+        var fleetQuality = (fleetScore / Number(alliancePlayer.ships)).toFixed(1);
         return [
           '<tr>',
           '<td id="player-id-' + alliancePlayer.id + '" class="' + ($('[name=ogame-player-id]').attr('content') === alliancePlayer.id ? 'enhancement' : '') + '">' + alliancePlayer.name + '</td>',
@@ -58,6 +66,10 @@ var fn = function () {
           '<td data-value="' + window._getPlayerScoreTrend(alliancePlayer.id, 's').n + '">' + window._getPlayerScoreTrend(alliancePlayer.id, 's').html + '</td>',
           '<td data-value="' + alliancePlayer.economyScore + '">', window.uipp_scoreHumanReadable(alliancePlayer.economyScore) + '</td>',
           '<td data-value="' + window._getPlayerScoreTrend(alliancePlayer.id, 'e').n + '">' + window._getPlayerScoreTrend(alliancePlayer.id, 'e').html + '</td>',
+          '<td data-value="' + basicBuildingScore + '">', window.uipp_scoreHumanReadable(basicBuildingScore) + '</td>',
+          '<td data-value="' + defenseScore + '">', window.uipp_scoreHumanReadable(defenseScore) + '</td>',
+          '<td data-value="' + fleetScore + '">', window.uipp_scoreHumanReadable(fleetScore) + '</td>',
+          '<td data-value="' + fleetQuality + '">', window.uipp_scoreHumanReadable(fleetQuality) + '</td>',
           '<td data-value="' + alliancePlayer.planets.length + '">',
           '<span class="tooltip tooltipRel tooltipClose tooltipRight" rel="planets-' + alliancePlayer.id + '">',
           alliancePlayer.planets.length,
@@ -100,7 +112,11 @@ var fn = function () {
           5: { sorter: 'attr-data-value' },
           6: { sorter: 'attr-data-value' },
           7: { sorter: 'attr-data-value' },
-          8: { sorter: 'attr-data-value' }
+          8: { sorter: 'attr-data-value' },
+          9: { sorter: 'attr-data-value' },
+          10: { sorter: 'attr-data-value' },
+          11: { sorter: 'attr-data-value' },
+          12: { sorter: 'attr-data-value' }
         }
       });
     });
