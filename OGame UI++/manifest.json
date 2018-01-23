@@ -66,6 +66,7 @@
       "src/ship-helper.js",
       "src/solarsat-helper.js",
       "src/tab-alliance.js",
+      "src/tab-highscore.js",
       "src/tab-links.js",
       "src/tab-settings.js",
       "src/tab-stats.js",

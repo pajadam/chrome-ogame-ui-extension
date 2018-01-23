@@ -88,6 +88,8 @@ var userscript = function () {
     window._addTabAlliance();
   }
 
+  window._addTabHighscore();
+
   if (features.stats || features.charts || features.nextbuilds) {
     window._addTabStats();
   }
