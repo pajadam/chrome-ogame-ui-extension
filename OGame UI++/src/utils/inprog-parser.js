@@ -5,6 +5,13 @@ var fn = function () {
       metal: $('.supply1 .time').text(),
       crystal: $('.supply2 .time').text(),
       deuterium: $('.supply3 .time').text(),
+      solarPlant: $('.supply4 .time').text(),
+      metalStorage: $('.supply22 .time').text(),
+      crystalStorage: $('.supply23 .time').text(),
+      deuteriumTank: $('.supply24 .time').text(),
+      roboticsFactory: $('.station14 .time').text(),
+      shipyard: $('.station21 .time').text(),
+      researchLab: $('.station31 .time').text(),
       plasma: $('.research122 .time').text(),
       astro: $('.research124 .time').text()
     };
@@ -18,7 +25,16 @@ var fn = function () {
     window.config.inprog = window.config.inprog || {};
 
     if (document.location.href.indexOf('resources') !== -1) {
-      ['metal', 'crystal', 'deuterium'].forEach(function (resource) {
+      ['metal', 'crystal', 'deuterium', 'solarPlant', 'metalStorage', 'crystalStorage', 'deuteriumTank'].forEach(function (resource) {
+        delete window.config.inprog[currentPlanetCoordinatesStr + '-' + resource];
+        if (inprog[resource]) {
+          window.config.inprog[currentPlanetCoordinatesStr + '-' + resource] = window._gfTimeToTimestamp(inprog[resource]);
+        }
+      });
+    }
+
+    if (document.location.href.indexOf('station') !== -1) {
+      ['roboticsFactory', 'shipyard', 'researchLab'].forEach(function (resource) {
         delete window.config.inprog[currentPlanetCoordinatesStr + '-' + resource];
         if (inprog[resource]) {
           window.config.inprog[currentPlanetCoordinatesStr + '-' + resource] = window._gfTimeToTimestamp(inprog[resource]);
@@ -39,13 +55,33 @@ var fn = function () {
       }
     }
 
+    var features = window.config.features;
     for (var key in window.config.inprog) {
       if (window.config.inprog[key] < Date.now()) {
         delete window.config.inprog[key];
+      } else if (features.soundAlertInprog) {
+        (function (planet, key) {
+          if (!planet) {
+            return;
+          }
+          window._soundAlert(window._translate('INPROG_COMPLETE', {
+            noBold: true,
+            planetName: planet.name,
+            building: getBuildingFromInprogKey(key)
+          }), window.config.inprog[key] - Date.now(), 2);
+        })(window._getMyPlanet(key), key);
       }
     }
 
     window._saveConfig();
+
+    function getBuildingFromInprogKey (key) {
+      var match = key.match(/\]-(\w+)/);
+      if (!match) {
+        return '';
+      }
+      return window._translate('BUILDING_' + match[1].toUpperCase());
+    }
   };
 };
 

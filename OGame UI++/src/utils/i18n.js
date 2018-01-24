@@ -105,7 +105,20 @@ var fn = function () {
       MENU_FIGHTSIM: 'Fight simulator',
       STATS_ALL: 'Statistics for all planets',
       STATS_DAILY: 'Daily production',
-      STATS_RATIO: 'Production ratio (relative to '
+      STATS_RATIO: 'Production ratio (relative to ',
+      BUILDING_METAL: 'Metal mineCost',
+      BUILDING_CRYSTAL: 'Crystal mine',
+      BUILDING_DEUTERIUM: 'Deuterium Synthesizer',
+      BUILDING_SOLARPLANT: 'Solar plant',
+      BUILDING_METALSTORAGE: 'Metal storage',
+      BUILDING_CRYSTALSTORAGE: 'Crystal storage',
+      BUILDING_DEUTERIUMTANK: 'Deuterium tank',
+      BUILDING_ROBOTICSFACTORY: 'Robotics factory',
+      BUILDING_SHIPYARD: 'Shipyard',
+      BUILDING_RESEARCHLAB: 'Research Lab',
+      INPROG_COMPLETE: 'Planet {planetName}, Planet {planetName} upgrade {building} completing',
+      EXPEDITION_FINISHED: 'Planet {planetName}, Planet {planetName} expedition finished',
+      RESOURCE_OVERFLOW: 'Planet {planetName}, Planet {planetName} resources overflow'
     },
     es: {
       UNIT_METAL: 'Metal',
@@ -272,7 +285,20 @@ var fn = function () {
       PLAYER: '玩家',
       NOTE: '備註',
       ACTIONS: '行動',
-      PLANETS: '星球'
+      PLANETS: '星球',
+      BUILDING_METAL: '金屬礦',
+      BUILDING_CRYSTAL: '晶體礦',
+      BUILDING_DEUTERIUM: '重氫合成器',
+      BUILDING_SOLARPLANT: '太陽能發電廠',
+      BUILDING_METALSTORAGE: '金屬儲存器',
+      BUILDING_CRYSTALSTORAGE: '晶體儲存器',
+      BUILDING_DEUTERIUMTANK: '重氫儲存槽',
+      BUILDING_ROBOTICSFACTORY: '機器人工廠',
+      BUILDING_SHIPYARD: '造船廠',
+      BUILDING_RESEARCHLAB: '研究實驗室',
+      INPROG_COMPLETE: '行星 {planetName} 行星 {planetName} 升級項目 {building} 即將完成',
+      EXPEDITION_FINISHED: '行星 {planetName} 行星 {planetName} 遠征探險任務即將完成',
+      RESOURCE_OVERFLOW: '行星 {planetName} 行星 {planetName} 資源已經爆倉囉'
     }
   };
 

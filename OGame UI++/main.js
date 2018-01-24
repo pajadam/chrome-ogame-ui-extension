@@ -28,6 +28,9 @@ var uipp_images = {
     missingresources: chrome.extension.getURL('img/features/missingresources.png'),
     nextbuilds: chrome.extension.getURL('img/features/nextbuilds.png'),
     solarsat: chrome.extension.getURL('img/features/solarsat.png'),
+    soundAlertExpedition: chrome.extension.getURL('img/features/soundAlertExpedition.png'),
+    soundAlertInprog: chrome.extension.getURL('img/features/soundAlertInprog.png'),
+    soundAlertOverflow: chrome.extension.getURL('img/features/soundAlertOverflow.png'),
     ship: chrome.extension.getURL('img/features/ship.png'),
     stats: chrome.extension.getURL('img/features/stats.png'),
     storagetime: chrome.extension.getURL('img/features/storagetime.png'),
@@ -68,6 +71,9 @@ var userscript = function () {
     nextbuilds: true,
     ship: true,
     solarsat: true,
+    soundAlertExpedition: true,
+    soundAlertInprog: true,
+    soundAlertOverflow: true,
     stats: true,
     storagetime: true,
     topeco: true,
@@ -102,6 +108,7 @@ var userscript = function () {
   window._addLinkTabs();
 
   // Add static helpers
+  window._addMissionParser();
   window._addInprogParser();
 
   if (features.storagetime) {
