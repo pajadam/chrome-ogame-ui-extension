@@ -284,11 +284,12 @@ var fn = function () {
 
     var ret = translations[lang][key] || translations['en'][key] || key;
     for (var k in args) {
-      if (args.noBold) {
-        ret = ret.replace('{' + k + '}', args[k]);
-      } else {
-        ret = ret.replace('{' + k + '}', '<span class="boldy">' + args[k] + '</span>');
+      var pattern = '{' + k + '}';
+      var replace = args[k];
+      if (!args.noBold) {
+        replace = '<span class="boldy">' + replace + '</span>';
       }
+      ret = ret.split(pattern).join(replace);
     }
 
     return ret;
