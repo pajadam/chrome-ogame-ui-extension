@@ -46,6 +46,7 @@ var fn = function () {
         '<option value="es" ' + (window.config.language === 'es' ? 'selected' : '') + '>Español</option>',
         '<option value="tr" ' + (window.config.language === 'tr' ? 'selected' : '') + '>Türk</option>',
         '<option value="pl" ' + (window.config.language === 'pl' ? 'selected' : '') + '>Polski</option>',
+        '<option value="tw" ' + (window.config.language === 'tw' ? 'selected' : '') + '>Traditional Chinese (Taiwan)</option>',
         '</select>',
         '</div>',
         '</div>'

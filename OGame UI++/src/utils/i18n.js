@@ -251,6 +251,28 @@ var fn = function () {
       STATS_ALL: 'Statystyki wszystkich planet',
       STATS_DAILY: 'Dzienna produkcja',
       STATS_RATIO: 'Współczynnik produkcji (w stosunku do '
+    },
+    tw: {
+      LANGUAGE: '正體中文(台灣)',
+      FEEDBACK: '意見反饋',
+      FEEDBACK_PLACEHOLDER: '填寫意見或是各種建議',
+      SEND: '送出',
+      CURRENT_STORAGE_TIME: '填滿剩餘倉庫所需時間',
+      TOTAL_STORAGE_TIME: '填滿整個倉庫所需時間',
+      TRADE_RATE: '交易比例',
+      RESET: '重置',
+      UNIT_METAL: '金屬',
+      UNIT_CRYSTAL: '晶體',
+      UNIT_DEUTERIUM: '重氫',
+      UNIT_ENERGY: '能量',
+      TIME_SECOND: 's',
+      TIME_MINUTE: 'm',
+      TIME_HOUR: 'h',
+      TIME_DAY: 'd',
+      PLAYER: '玩家',
+      NOTE: '備註',
+      ACTIONS: '行動',
+      PLANETS: '星球'
     }
   };
 
