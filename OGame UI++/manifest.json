@@ -55,6 +55,7 @@
       "src/utils/rentability-time.js",
       "src/utils/set-config-my-planets.js",
       "src/utils/set-config-trade-rate.js",
+      "src/utils/slack-alert.js",
       "src/utils/sound-alert.js",
       "src/utils/parse-research-tab.js",
       "src/utils/upload-image.js",
