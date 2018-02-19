@@ -118,7 +118,8 @@ var fn = function () {
       BUILDING_RESEARCHLAB: 'Research Lab',
       INPROG_COMPLETE: 'Planet {planetName}, Planet {planetName} upgrade {building} completing',
       EXPEDITION_FINISHED: 'Planet {planetName}, Planet {planetName} expedition finished',
-      RESOURCE_OVERFLOW: 'Planet {planetName}, Planet {planetName} resources overflow'
+      RESOURCE_OVERFLOW: 'Planet {planetName}, Planet {planetName} resources overflow',
+      NEUTRAL_TRANSFER_ARRIVAL: 'Neutral transfer arrived at planet {planetName}'
     },
     es: {
       UNIT_METAL: 'Metal',
@@ -298,7 +299,8 @@ var fn = function () {
       BUILDING_RESEARCHLAB: '研究實驗室',
       INPROG_COMPLETE: '行星 {planetName} 行星 {planetName} 升級項目 {building} 即將完成',
       EXPEDITION_FINISHED: '行星 {planetName} 行星 {planetName} 遠征探險任務即將完成',
-      RESOURCE_OVERFLOW: '行星 {planetName} 行星 {planetName} 資源已經爆倉囉'
+      RESOURCE_OVERFLOW: '行星 {planetName} 行星 {planetName} 資源已經爆倉囉',
+      NEUTRAL_TRANSFER_ARRIVAL: '中立運輸船隊即將抵達行星 {planetName}'
     }
   };
 

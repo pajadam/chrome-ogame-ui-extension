@@ -8,6 +8,7 @@ var fn = function () {
       var $tr = $(this).parent().parent();
 
       var reverse = $tr.find('.icon_movement_reserve').length ? true : false;
+      var neutral = $tr.find('.neutral').length ? true : false;
       var arrival = Number($tr.attr('data-arrival-time') + "000");
 
       var trCount = $tooltip.find('tr').length;
@@ -21,6 +22,7 @@ var fn = function () {
         toMoon: !!$tr.find('.destFleet .moon').length,
         nShips: $tr.find('.detailsFleet').text().trim(),
         reverse: reverse,
+        neutral: neutral,
         arrival: arrival,
         type: Number($tr.attr('data-mission-type'))
       };
@@ -71,6 +73,15 @@ var fn = function () {
         var planet = window._getMyPlanet(mission.to);
         if (planet) {
           window._soundAlert(window._translate('EXPEDITION_FINISHED', {
+            noBold: true,
+            planetName: planet.name
+          }), mission.arrival - Date.now(), 2);
+        }
+      }
+      if (features.soundAlertNeutralArrival && mission.neutral && mission.type === 3) {
+        var planet = window._getMyPlanet(mission.to);
+        if (planet) {
+          window._soundAlert(window._translate('NEUTRAL_TRANSFER_ARRIVAL', {
             noBold: true,
             planetName: planet.name
           }), mission.arrival - Date.now(), 2);
