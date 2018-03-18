@@ -149,6 +149,19 @@ var userscript = function () {
 
   // Tracking code
   window._setupAnalytics();
+
+  // hack maxAll function
+  if (typeof (window.maxAll) === 'function') {
+    window.maxAll = function maxAll() {
+      consumption += (window.config.minDeuterium || 0);
+      metal = 0;
+      crystal = 0;
+      deuterium = 0;
+      maxMetal()
+      maxCrystal();
+      maxDeuterium();
+    };
+  }
 };
 
 // inject user script into the document

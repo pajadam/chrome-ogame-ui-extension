@@ -9,6 +9,15 @@ var fn = function () {
     window._saveConfig();
   };
 
+  window._setMinDeuterium = function _setMinDeuterium (n) {
+    if (isNaN(Number(n.replace(',', '.')))) {
+      return;
+    }
+
+    window.config.minDeuterium = Number(n.replace(',', '.'));
+    window._saveConfig();
+  };
+
   window._addTabSettings = function _addTabSettings () {
     var $menuEntry = $('<li class="settings enhanced"><span class="menu_icon"><div class="menuImage alliance"></div></span><a class="menubutton" href="#" accesskey="" target="_self"><span class="textlabel enhancement">OGame UI++</span></a></li>');
     $('#menuTable').append($menuEntry);
@@ -29,6 +38,17 @@ var fn = function () {
         '<input type="text" value="' + window.config.tradeRate[1] + '" style="width:30px; float: left; margin-right: 10px" onchange="_setTradeRate(1, this.value)"/>',
         '<div class="resourceIcon deuterium" style="margin-top: -3px"></div>',
         '<input type="text" value="' + window.config.tradeRate[2] + '" style="width:30px; float: left;" onchange="_setTradeRate(2, this.value)"/>',
+        '</div>',
+        '</div>'
+      ].join('')));
+
+      // min deuterium config
+      $wrapper.append($([
+        '<div style="padding: 10px 0" class="clearfix">',
+        '<div style="float: left; line-height: 32px;padding-right: 10px;">' + window._translate('MIN_DEUTERIUM') + ' : ' + '</div>',
+        '<div>',
+        '<div class="resourceIcon deuterium" style="margin-top: -3px"></div>',
+        '<input type="text" value="' + (window.config.minDeuterium || 0) + '" style="width:150px; float: left;" onchange="_setMinDeuterium(this.value)"/>',
         '</div>',
         '</div>'
       ].join('')));
