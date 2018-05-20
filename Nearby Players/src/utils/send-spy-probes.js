@@ -3,7 +3,7 @@ var fn = function () {
 
   window._startTime = Date.now();
   window._spy = function (galaxy, system, position) {
-    
+
     function debug() {
       if (window.uipp_debug)
         console.log('ui++:', ...arguments);
@@ -60,7 +60,7 @@ var fn = function () {
           if ($el.length == 0)
             $el = $p.append('<div class="status" style="position: absolute; white-space: nowrap;">'
               ).find('.status');
-          $el.text(status);  
+          $el.text(status);
           // $('#spyQueueStatus').text(status);
         } else
           $el.remove();
@@ -71,7 +71,7 @@ var fn = function () {
           _this.spyInMs = delay;
           _this.setStatus('delay');
           setTimeout(_this.spy, delay);
-          _this.statusInterval = setInterval(() => { 
+          _this.statusInterval = setInterval(() => {
               _this.spyInMs-= 1000;
               _this.showStatus(Math.round(Math.max(0, _this.spyInMs/1000)) + 'sec ' + _this.waitingStatus);
             }, 1000 )
@@ -93,7 +93,7 @@ var fn = function () {
             system: system,
             position: position,
             type: 1,
-            shipCount: window.constants.espionage,
+            shipCount: (window.constants || {}).espionage,
             token: getNewToken()
           },
           dataType: 'json',
