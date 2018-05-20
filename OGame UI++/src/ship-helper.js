@@ -19,6 +19,11 @@ var fn = function () {
           '<div id="pt-deuterium" style="position:absolute;top:-5px;left:52.66px;width:25.33px;height:17px;border:1px solid #AB7AFF;background-image: url(' + window.uipp_images.resources.deuterium + ');background-size:100% 100%;cursor:pointer" onclick="uipp_toggleShipResources(\'pt\', \'deuterium\')">',
           '</div>'
         ].join('')));
+        $el.find('#button202').append($([
+          '<div id="pt-all" style="position:absolute;top:13px;left:0;width:77px;height:17px;border:1px solid #AB7AFF;background-color:white;color:black;opacity:0.7;cursor:pointer;font-weight:bold;text-align:center" onclick="uipp_toggleShipResources(\'pt\', \'metal\');uipp_toggleShipResources(\'pt\', \'crystal\');uipp_toggleShipResources(\'pt\', \'deuterium\')">',
+          'ALL',
+          '</div>'
+        ].join('')));
 
 
         $el.find('#button203').append($([
@@ -31,6 +36,11 @@ var fn = function () {
         ].join('')));
         $el.find('#button203').append($([
           '<div id="gt-deuterium" style="position:absolute;top:-5px;left:52.66px;width:25.33px;height:17px;border:1px solid #AB7AFF;background-image: url(' + window.uipp_images.resources.deuterium + ');background-size:100% 100%;cursor:pointer" onclick="uipp_toggleShipResources(\'gt\', \'deuterium\')">',
+          '</div>'
+        ].join('')));
+        $el.find('#button203').append($([
+          '<div id="gt-all" style="position:absolute;top:13px;left:0;width:77px;height:17px;border:1px solid #AB7AFF;background-color:white;color:black;opacity:0.7;cursor:pointer;font-weight:bold;text-align:center" onclick="uipp_toggleShipResources(\'gt\', \'metal\');uipp_toggleShipResources(\'gt\', \'crystal\');uipp_toggleShipResources(\'gt\', \'deuterium\')">',
+          'ALL',
           '</div>'
         ].join('')));
 
