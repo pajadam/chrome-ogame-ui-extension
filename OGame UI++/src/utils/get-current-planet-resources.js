@@ -50,6 +50,9 @@ var fn = function () {
     };
 
     // parse resources data from the DOM and sets the resources object
+    if (!window.initAjaxResourcebox) {
+      return null;
+    }
     var f = window.initAjaxResourcebox.toString();
     f = f.replace('function initAjaxResourcebox(){reloadResources(', '');
     f = f.substring(0, f.length - 3);

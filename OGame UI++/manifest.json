@@ -82,6 +82,8 @@
       "main.js"
     ],
     "matches": [
+      "http://*.ogame.gameforge.com/",
+      "https://*.ogame.gameforge.com/",
       "http://*.ogame.gameforge.com/game/*",
       "https://*.ogame.gameforge.com/game/*"
     ],

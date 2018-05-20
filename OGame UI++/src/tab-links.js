@@ -3,6 +3,9 @@ var fn = function () {
 
   window._addLinkTabs = function _addLinkTabs () {
     var universe = $('[name="ogame-universe"]').attr('content');
+    if (!universe) {
+      return
+    }
     var serverLang = universe.split('-')[1].split('.')[0];
     var serverNum = universe.split('-')[0].replace('s', '');
     var playerName = $('[name="ogame-player-name"]').attr('content');

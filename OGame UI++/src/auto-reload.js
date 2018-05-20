@@ -1,6 +1,18 @@
 var fn = function () {
   'use strict';
   window._autoReload = function _autoReload () {
+    var autoReloadConfig = window.config.autoReload || {};
+
+    if (location.pathname === '/') {
+      // already logout
+      if (!autoReloadConfig.lastAlert || autoReloadConfig.lastAlert < (Date.now() - 5 * 60 * 1000)) {
+        autoReloadConfig.lastAlert = Date.now()
+        window._slackAlert(autoReloadConfig.lastAlert, 'logout', 'OGame logout')
+        window.config.autoReload = autoReloadConfig;
+        window._saveConfig();
+      }
+    }
+
     var resources = window._getCurrentPlanetResources();
 
     if (!resources) {

@@ -3,7 +3,7 @@ var fn = function () {
   window._getConfig = getConfig;
   window._saveConfig = saveConfig;
   window._resetConfig = resetConfig;
-  var playerId = $('[name=ogame-player-id]').attr('content');
+  var playerId = $('[name=ogame-player-id]').attr('content') || '0';
 
   // window.config used to be stored in 'og-enhancements',
   // now it is stored in 'og-enhancement-1003000' (playerId)
