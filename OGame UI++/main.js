@@ -58,8 +58,11 @@ var userscript = function () {
   // window.config default values
   window.config = window._getConfig();
   window._setConfigTradeRate();
-  window._setConfigMyPlanets();
+  try { window._setConfigMyPlanets(); } catch (e) {}
   window._parseResearchTab();
+
+  // Auto reload
+  window._autoReload();
 
   window.config.features = window.config.features || {};
   var defaultFeatures = {
@@ -137,9 +140,6 @@ var userscript = function () {
   if (features.solarsat) {
     window._addSolarSatHelperInterval();
   }
-
-  // Auto reload
-  window._autoReload();
 
   // Refresh universe data (config.players)
   window._refreshUniverseData();

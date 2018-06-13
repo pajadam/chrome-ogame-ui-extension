@@ -83,10 +83,8 @@
       "main.js"
     ],
     "matches": [
-      "http://*.ogame.gameforge.com/",
-      "https://*.ogame.gameforge.com/",
-      "http://*.ogame.gameforge.com/game/*",
-      "https://*.ogame.gameforge.com/game/*"
+      "http://*.ogame.gameforge.com/*",
+      "https://*.ogame.gameforge.com/*"
     ],
     "run_at": "document_idle"
   } ],

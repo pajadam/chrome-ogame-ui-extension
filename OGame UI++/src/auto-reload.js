@@ -3,7 +3,7 @@ var fn = function () {
   window._autoReload = function _autoReload () {
     var autoReloadConfig = window.config.autoReload || {};
 
-    if (location.pathname === '/') {
+    if (!location.pathname.startsWith('/game/')) {
       // already logout
       if (!autoReloadConfig.lastAlert || autoReloadConfig.lastAlert < (Date.now() - 5 * 60 * 1000)) {
         autoReloadConfig.lastAlert = Date.now()
